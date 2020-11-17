@@ -1,5 +1,6 @@
 import { getEvenInitialData, getEvenParsedQuestion, getEvenParsedAnswer } from './games/even.js';
 import { getCalcInitialData, getCalcParsedQuestion, getCalcParsedAnswer } from './games/calculator.js';
+import { getGcdInitialData, getGcdParsedQuestion, getGcdParsedAnswer } from './games/gcd.js';
 
 export default {
   even: {
@@ -13,5 +14,11 @@ export default {
     parsedQuestion: getCalcParsedQuestion,
     parsedAnswer: getCalcParsedAnswer,
     message: 'What is the result of the expression?',
+  },
+  gcd: {
+    initialData: getGcdInitialData,
+    parsedQuestion: getGcdParsedQuestion,
+    parsedAnswer: getGcdParsedAnswer,
+    message: 'Find the greatest common divisor of given numbers.',
   },
 };
