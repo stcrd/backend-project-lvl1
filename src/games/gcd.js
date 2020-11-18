@@ -11,11 +11,19 @@ const gcd = (a, b) => {
 };
 const maxNumber = 30;
 
-export const getGcdInitialData = () => {
+const getInitialData = () => {
   const num1 = getRandomInt(maxNumber);
   const num2 = getRandomInt(maxNumber);
   return { num1, num2 };
 };
 
-export const getGcdParsedQuestion = ({ num1, num2 }) => `${num1} ${num2}`;
-export const getGcdParsedAnswer = ({ num1, num2 }) => `${gcd(num1, num2)}`;
+const getQuestion = ({ num1, num2 }) => `${num1} ${num2}`;
+const getAnswer = ({ num1, num2 }) => `${gcd(num1, num2)}`;
+const getMessage = () => 'Find the greatest common divisor of given numbers.';
+
+export {
+  getInitialData,
+  getQuestion,
+  getAnswer,
+  getMessage,
+};
