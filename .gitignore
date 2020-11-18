@@ -1,1 +1,4 @@
 /node_modules/
+/.github/workflows/hexlet-check.yml
+/bin/brain-games.js
+/src/cli.js
