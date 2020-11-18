@@ -13,7 +13,7 @@ const generateProgression = (first, increment) => {
   return iter([first]);
 };
 
-export const getProgressionInitialData = () => {
+const getInitialData = () => {
   const startingNumber = getRandomInt(maxStartingNumber);
   const step = getRandomInt(maxIncrement) + 1;
   const hiddenIndex = getRandomInt(maxLength - 1);
@@ -25,8 +25,16 @@ export const getProgressionInitialData = () => {
     progression,
   };
 };
-export const getProgressionParsedQuestion = ({ progression, hiddenIndex }) => {
+const getQuestion = ({ progression, hiddenIndex }) => {
   const modifiedProgression = [...progression].fill('..', hiddenIndex, hiddenIndex + 1);
   return modifiedProgression.join(' ');
 };
-export const getProgressionParsedAnswer = ({ progression, hiddenIndex }) => `${progression[hiddenIndex]}`;
+const getAnswer = ({ progression, hiddenIndex }) => `${progression[hiddenIndex]}`;
+const getMessage = () => 'What number is missing in the progression?';
+
+export {
+  getInitialData,
+  getQuestion,
+  getAnswer,
+  getMessage,
+};
