@@ -20,7 +20,7 @@ const getRandomOperation = () => {
   return operations[randomIndex];
 };
 
-export const getCalcInitialData = () => {
+const getInitialData = () => {
   const num1 = getRandomInt(maxNumber);
   const num2 = getRandomInt(maxNumber);
   const operation = getRandomOperation();
@@ -32,9 +32,17 @@ export const getCalcInitialData = () => {
     operation,
   };
 };
-export const getCalcParsedQuestion = ({ num1, num2, symbol }) => `${num1} ${symbol} ${num2}`;
-export const getCalcParsedAnswer = ({ num1, num2, operation }) => {
+const getQuestion = ({ num1, num2, symbol }) => `${num1} ${symbol} ${num2}`;
+const getAnswer = ({ num1, num2, operation }) => {
   const operationFunction = functions[operation];
   const result = operationFunction(num1, num2);
   return `${result}`;
+};
+const getMessage = () => 'What is the result of the expression?';
+
+export {
+  getInitialData,
+  getQuestion,
+  getAnswer,
+  getMessage,
 };
