@@ -2,6 +2,7 @@ import { getEvenInitialData, getEvenParsedQuestion, getEvenParsedAnswer } from '
 import { getCalcInitialData, getCalcParsedQuestion, getCalcParsedAnswer } from './games/calculator.js';
 import { getGcdInitialData, getGcdParsedQuestion, getGcdParsedAnswer } from './games/gcd.js';
 import { getProgressionInitialData, getProgressionParsedQuestion, getProgressionParsedAnswer } from './games/progression.js';
+import { getPrimeInitialData, getPrimeParsedQuestion, getPrimeParsedAnswer } from './games/prime.js';
 
 export default {
   even: {
@@ -27,5 +28,11 @@ export default {
     parsedQuestion: getProgressionParsedQuestion,
     parsedAnswer: getProgressionParsedAnswer,
     message: 'What number is missing in the progression?',
+  },
+  prime: {
+    initialData: getPrimeInitialData,
+    parsedQuestion: getPrimeParsedQuestion,
+    parsedAnswer: getPrimeParsedAnswer,
+    message: 'Answer "yes" if given number is prime. Otherwise answer "no".',
   },
 };
