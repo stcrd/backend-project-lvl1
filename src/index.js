@@ -1,14 +1,24 @@
-import { getUserName, getUserAnswer } from './user-prompts.js';
-import dispatcher from './dispatcher.js';
+import promptly from 'promptly';
+
+const getUserName = async () => {
+  console.log('Welcome to the Brain Games!');
+  const name = await promptly.prompt('May I have your name?');
+  console.log(`Hello, ${name}!`);
+  return name;
+};
+const getUserAnswer = async () => {
+  const answer = await promptly.prompt('Your answer: ');
+  return answer;
+};
 
 const game = (gameType, playerName, score) => {
   if (score === 0) {
     console.log(`Congratulations, ${playerName}!`);
     return;
   }
-  const initialData = dispatcher[gameType].getInitialData();
-  const question = dispatcher[gameType].getQuestion(initialData);
-  const answer = dispatcher[gameType].getAnswer(initialData);
+  const initialData = gameType.getInitialData();
+  const question = gameType.getQuestion(initialData);
+  const answer = gameType.getAnswer(initialData);
   console.log(`Question: ${question}`);
   getUserAnswer().then((userAnswer) => {
     if (userAnswer === answer) {
@@ -23,7 +33,7 @@ const game = (gameType, playerName, score) => {
 export default (gameType) => {
   const maxScore = 3;
   getUserName().then((name) => {
-    console.log(`${dispatcher[gameType].getMessage()}`);
+    console.log(`${gameType.getMessage()}`);
     game(gameType, name, maxScore);
   });
 };
