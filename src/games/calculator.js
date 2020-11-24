@@ -1,4 +1,5 @@
 import getRandomInt from '../common-functions.js';
+import main from '../index.js';
 
 const symbols = {
   add: '+',
@@ -16,13 +17,13 @@ const numberOfOperations = operations.length;
 const maxNumber = 20;
 
 const getRandomOperation = () => {
-  const randomIndex = getRandomInt(numberOfOperations);
+  const randomIndex = getRandomInt(0, numberOfOperations);
   return operations[randomIndex];
 };
 
 const getInitialData = () => {
-  const num1 = getRandomInt(maxNumber);
-  const num2 = getRandomInt(maxNumber);
+  const num1 = getRandomInt(0, maxNumber);
+  const num2 = getRandomInt(0, maxNumber);
   const operation = getRandomOperation();
   const symbol = symbols[operation];
   return {
@@ -38,11 +39,18 @@ const getAnswer = ({ num1, num2, operation }) => {
   const result = operationFunction(num1, num2);
   return `${result}`;
 };
-const getMessage = () => 'What is the result of the expression?';
+const getInstruction = () => 'What is the result of the expression?';
 
-export {
-  getInitialData,
-  getQuestion,
-  getAnswer,
-  getMessage,
+const getData = () => {
+  const data = getInitialData();
+  const question = getQuestion(data);
+  const answer = getAnswer(data);
+  const instruction = getInstruction();
+  return {
+    getData,
+    question,
+    answer,
+    instruction,
+  };
 };
+export default () => main(getData());

@@ -1,4 +1,5 @@
 import getRandomInt from '../common-functions.js';
+import main from '../index.js';
 
 const calcGcd = (a, b) => {
   if (a === b) {
@@ -9,21 +10,29 @@ const calcGcd = (a, b) => {
   }
   return calcGcd(a, b - a);
 };
-const maxNumber = 30;
+const min = 2;
+const max = 30;
 
 const getInitialData = () => {
-  const num1 = getRandomInt(maxNumber);
-  const num2 = getRandomInt(maxNumber);
+  const num1 = getRandomInt(min, max);
+  const num2 = getRandomInt(min, max);
   return { num1, num2 };
 };
 
 const getQuestion = ({ num1, num2 }) => `${num1} ${num2}`;
 const getAnswer = ({ num1, num2 }) => `${calcGcd(num1, num2)}`;
-const getMessage = () => 'Find the greatest common divisor of given numbers.';
+const getInstruction = () => 'Find the greatest common divisor of given numbers.';
 
-export {
-  getInitialData,
-  getQuestion,
-  getAnswer,
-  getMessage,
+const getData = () => {
+  const data = getInitialData();
+  const question = getQuestion(data);
+  const answer = getAnswer(data);
+  const instruction = getInstruction();
+  return {
+    getData,
+    question,
+    answer,
+    instruction,
+  };
 };
+export default () => main(getData());
