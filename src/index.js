@@ -11,29 +11,28 @@ const getUserAnswer = async () => {
   return answer;
 };
 
-const game = (gameType, playerName, score) => {
+const game = (gameData, playerName, score) => {
   if (score === 0) {
     console.log(`Congratulations, ${playerName}!`);
     return;
   }
-  const initialData = gameType.getInitialData();
-  const question = gameType.getQuestion(initialData);
-  const answer = gameType.getAnswer(initialData);
+  const { question, answer, getData } = gameData;
   console.log(`Question: ${question}`);
   getUserAnswer().then((userAnswer) => {
     if (userAnswer === answer) {
       console.log('Correct!');
-      game(gameType, playerName, score - 1);
+      game(getData(), playerName, score - 1);
     } else {
       console.log(`'${userAnswer}' is a wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${playerName}!`);
     }
   });
 };
 
-export default (gameType) => {
+export default (gameData) => {
   const maxScore = 3;
+  const { instruction } = gameData;
   getUserName().then((name) => {
-    console.log(`${gameType.getMessage()}`);
-    game(gameType, name, maxScore);
+    console.log(`${instruction}`);
+    game(gameData, name, maxScore);
   });
 };
