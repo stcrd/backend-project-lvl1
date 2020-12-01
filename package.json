@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "![Actions Status](/workflows/hexlet-check/badge.svg)",
+  "description": "Brain Games - Hexlet Nodejs Project #1",
   "bin": {
     "brain-games": "bin/brain-games.js",
     "brain-even": "bin/brain-even.js",
