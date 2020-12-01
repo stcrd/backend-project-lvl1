@@ -6,12 +6,12 @@ const max = 100;
 
 const isPrime = (num) => {
   const initialDivisor = 2;
-  const iter = (number, divisor) => {
-    if (number % divisor === 0) return false;
-    if (divisor > Math.sqrt(number)) return true;
-    return iter(number, divisor + 1);
+  const iter = (divisor) => {
+    if (num % divisor === 0) return false;
+    if (divisor > Math.sqrt(num)) return true;
+    return iter(divisor + 1);
   };
-  return iter(num, initialDivisor);
+  return iter(initialDivisor);
 };
 
 const getInitialData = () => getRandomInt(min, max);
