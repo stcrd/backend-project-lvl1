@@ -37,7 +37,7 @@ const getQuestion = ({ num1, num2, symbol }) => `${num1} ${symbol} ${num2}`;
 const getAnswer = ({ num1, num2, operation }) => {
   const operationFunction = functions[operation];
   const result = operationFunction(num1, num2);
-  return `${result}`;
+  return result.toString();
 };
 const getInstruction = () => 'What is the result of the expression?';
 
