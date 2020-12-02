@@ -1,5 +1,9 @@
-import getRandomInt from '../common-functions.js';
-import main from '../index.js';
+import getRandomInt from '../generate-random-int.js';
+import runGame from '../index.js';
+
+const min = 2;
+const max = 30;
+const instruction = 'Find the greatest common divisor of given numbers.';
 
 const calcGcd = (a, b) => {
   if (a === b) {
@@ -10,29 +14,13 @@ const calcGcd = (a, b) => {
   }
   return calcGcd(a, b - a);
 };
-const min = 2;
-const max = 30;
-
-const getInitialData = () => {
-  const num1 = getRandomInt(min, max);
-  const num2 = getRandomInt(min, max);
-  return { num1, num2 };
-};
-
-const getQuestion = ({ num1, num2 }) => `${num1} ${num2}`;
-const getAnswer = ({ num1, num2 }) => `${calcGcd(num1, num2)}`;
-const getInstruction = () => 'Find the greatest common divisor of given numbers.';
 
 const getData = () => {
-  const data = getInitialData();
-  const question = getQuestion(data);
-  const answer = getAnswer(data);
-  const instruction = getInstruction();
-  return {
-    getData,
-    question,
-    answer,
-    instruction,
-  };
+  const num1 = getRandomInt(min, max);
+  const num2 = getRandomInt(min, max);
+  const question = `${num1} ${num2}`;
+  const answer = `${calcGcd(num1, num2)}`;
+  return { question, answer, instruction };
 };
-export default () => main(getData());
+
+export default () => runGame(getData);
