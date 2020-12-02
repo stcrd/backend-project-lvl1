@@ -1,8 +1,9 @@
 import getRandomInt from '../generate-random-int.js';
-import main from '../index.js';
+import runGame from '../index.js';
 
 const min = 3;
 const max = 100;
+const instruction = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
   const initialDivisor = 2;
@@ -14,21 +15,11 @@ const isPrime = (num) => {
   return iter(initialDivisor);
 };
 
-const getInitialData = () => getRandomInt(min, max);
-const getQuestion = (number) => `${number}`;
-const getAnswer = (number) => (isPrime(number) ? 'yes' : 'no');
-const getInstruction = () => 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
 const getData = () => {
-  const data = getInitialData();
-  const question = getQuestion(data);
-  const answer = getAnswer(data);
-  const instruction = getInstruction();
-  return {
-    getData,
-    question,
-    answer,
-    instruction,
-  };
+  const num = getRandomInt(min, max);
+  const question = num.toString();
+  const answer = isPrime(num) ? 'yes' : 'no';
+  return { question, answer, instruction };
 };
-export default () => main(getData());
+
+export default () => runGame(getData);
