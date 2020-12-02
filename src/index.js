@@ -1,38 +1,28 @@
-import promptly from 'promptly';
+import readlineSync from 'readline-sync';
 
-const getUserName = async () => {
+const runGame = (generateNewRound) => {
+  const maxScore = 3;
   console.log('Welcome to the Brain Games!');
-  const name = await promptly.prompt('May I have your name?');
+  const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
-  return name;
-};
-const getUserAnswer = async () => {
-  const answer = await promptly.prompt('Your answer: ');
-  return answer;
-};
+  const { instruction } = generateNewRound();
+  console.log(instruction);
 
-const game = (gameData, playerName, score) => {
-  if (score === 0) {
-    console.log(`Congratulations, ${playerName}!`);
-    return;
-  }
-  const { question, answer, getData } = gameData;
-  console.log(`Question: ${question}`);
-  getUserAnswer().then((userAnswer) => {
+  const executeGameRound = ({ question, answer }, score) => {
+    if (score === 0) {
+      console.log(`Congratulations, ${name}!`);
+      return;
+    }
+    console.log(`Question: ${question}`);
+    const userAnswer = readlineSync.question('Your answer: ');
     if (userAnswer === answer) {
       console.log('Correct!');
-      game(getData(), playerName, score - 1);
+      executeGameRound(generateNewRound(), score - 1);
     } else {
-      console.log(`'${userAnswer}' is a wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${playerName}!`);
+      console.log(`'${userAnswer}' is a wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${name}!`);
     }
-  });
+  };
+  executeGameRound(generateNewRound(), maxScore);
 };
 
-export default (gameData) => {
-  const maxScore = 3;
-  const { instruction } = gameData;
-  getUserName().then((name) => {
-    console.log(`${instruction}`);
-    game(gameData, name, maxScore);
-  });
-};
+export default runGame;
