@@ -14,13 +14,13 @@ const generateProgression = (first, increment) => {
   return iter([], 0);
 };
 
-const getData = () => {
+const generateNewRound = () => {
   const startingNumber = getRandomInt(0, maxStartingNumber);
   const increment = getRandomInt(1, maxIncrement);
   const hiddenIndex = getRandomInt(0, maxLength - 1);
   const progression = generateProgression(startingNumber, increment);
   const question = [...progression].fill('..', hiddenIndex, hiddenIndex + 1).join(' ');
   const answer = (startingNumber + increment * hiddenIndex).toString();
-  return { question, answer, instruction };
+  return { question, answer };
 };
-export default () => runGame(getData);
+export default () => runGame(generateNewRound, instruction);

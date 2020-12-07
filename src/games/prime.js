@@ -15,11 +15,11 @@ const isPrime = (num) => {
   return iter(initialDivisor);
 };
 
-const getData = () => {
+const generateNewRound = () => {
   const num = getRandomInt(min, max);
   const question = num.toString();
   const answer = isPrime(num) ? 'yes' : 'no';
-  return { question, answer, instruction };
+  return { question, answer };
 };
 
-export default () => runGame(getData);
+export default () => runGame(generateNewRound, instruction);

@@ -15,12 +15,12 @@ const calcGcd = (a, b) => {
   return calcGcd(a, b - a);
 };
 
-const getData = () => {
+const generateNewRound = () => {
   const num1 = getRandomInt(min, max);
   const num2 = getRandomInt(min, max);
   const question = `${num1} ${num2}`;
   const answer = `${calcGcd(num1, num2)}`;
-  return { question, answer, instruction };
+  return { question, answer };
 };
 
-export default () => runGame(getData);
+export default () => runGame(generateNewRound, instruction);
