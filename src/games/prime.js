@@ -6,6 +6,7 @@ const max = 100;
 const instruction = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
+  if (num === 1) return false;
   const initialDivisor = 2;
   const iter = (divisor) => {
     if (num % divisor === 0) return false;
