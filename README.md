@@ -1,9 +1,9 @@
 #### A collection of simple console games.
-Brain-calc: just arithmetic calculation. Were you a good student in primary school?  
-Brain-even: even or odd. Are the odds even fair?  
-Brain-gcd: find the greatest common divisor. This is getting serious.  
-Brain-prime: prime or not. Your prime time!  
-Brain-progression: a series of numbers with one hidden. See the unseen!
+* **Brain-calc** - Just arithmetic calculation. Were you a good student in primary school?  
+* **Brain-even** - Even or odd. Are the odds even fair?  
+* **Brain-gcd** - Find the greatest common divisor. This is getting serious.  
+* **Brain-prime** - Prime or not. Your prime time!  
+* **Brain-progression** - Number series with one hidden. See the unseen!
 ##
 
 # nodejs-package
