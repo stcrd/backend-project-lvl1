@@ -15,7 +15,7 @@ const calcGcd = (a, b) => {
   return calcGcd(a, b - a);
 };
 
-const generateNewRound = () => {
+const generateRound = () => {
   const num1 = getRandomInt(min, max);
   const num2 = getRandomInt(min, max);
   const question = `${num1} ${num2}`;
@@ -23,4 +23,4 @@ const generateNewRound = () => {
   return { question, answer };
 };
 
-export default () => runGame(generateNewRound, instruction);
+export default () => runGame(generateRound, instruction);

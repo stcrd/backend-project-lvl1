@@ -10,7 +10,7 @@ const numberOfOperations = Object.keys(operations).length;
 const maxNumber = 20;
 const instruction = 'What is the result of the expression?';
 
-const generateNewRound = () => {
+const generateRound = () => {
   const randomIndex = getRandomInt(0, numberOfOperations);
   const operation = Object.keys(operations)[randomIndex];
   const num1 = getRandomInt(0, maxNumber);
@@ -20,4 +20,4 @@ const generateNewRound = () => {
   return { question, answer };
 };
 
-export default () => runGame(generateNewRound, instruction);
+export default () => runGame(generateRound, instruction);
