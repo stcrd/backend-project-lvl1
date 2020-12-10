@@ -1,9 +1,8 @@
-##
-A collection of simple console games.
-Brain-calc: just arithmetic calculation. Were you a good student in primary school?
-Brain-even: even or odd. Are the odds even?
-Brain-gcd: find the greatest common divisor. This is getting serious.
-Brain-prime: prime or not. Your prime time!
+#### A collection of simple console games.
+Brain-calc: just arithmetic calculation. Were you a good student in primary school?  
+Brain-even: even or odd. Are the odds even?  
+Brain-gcd: find the greatest common divisor. This is getting serious.  
+Brain-prime: prime or not. Your prime time!  
 Brain-progression: a series of numbers with a missing one. Quick! Find the missing number!
 ##
 
